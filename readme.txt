@@ -72,12 +72,12 @@ docker exec -it systemd-ubuntu sh
 
 2025.4.1
 v5版本
-修复随机无法启动docker deamon 错误
+修复随机无法启动docker daemon 错误
 添加一键启动docker-demon/docker容器脚本/data/docker/check.sh
 添加定时器每隔10分钟执行，桥接网络修复脚本
 桥接网络日志为/sdcardl/docker-bridge.log
 容器启动日志为/sdcarf/docker.log
-docker-deamon日志为/sdcard/docker-daemon.log
+docker-daemon日志为/sdcard/docker-daemon.log
 一些细节修改
 
 2025.3.25

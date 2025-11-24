@@ -85,10 +85,10 @@ export LD_LIBRARY_PATH=/data/docker/lib:$LD_LIBRARY_PATH
 
 #清理进程
 mkdir -p /data/docker/lib/docker/containerd/daemon/io.containerd.runtime.v2.task/moby
-rm /sdcard/docker-deamon.log
+rm /sdcard/docker-daemon.log
 rm /data/docker/var/run/docker.pid
 
-#kill docker deamon/containerd
+#kill docker daemon/containerd
 PIDA=$(pgrep dockerd)
 for i in $PIDA; do
      kill $i 2>/dev/null
@@ -101,8 +101,8 @@ done
 
 sleep 2
 #启动docker daemon
-#nohup /data/docker/bin/busybox sh /data/docker/bin/dockerd > /sdcard/docker-deamon.log 2>&1 &
-/data/docker/bin/busybox sh /data/docker/bin/dockerd > /sdcard/docker-deamon.log 2>&1 &
+#nohup /data/docker/bin/busybox sh /data/docker/bin/dockerd > /sdcard/docker-daemon.log 2>&1 &
+/data/docker/bin/busybox sh /data/docker/bin/dockerd > /sdcard/docker-daemon.log 2>&1 &
 
 sleep 15
 

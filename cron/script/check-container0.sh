@@ -11,7 +11,7 @@ sleep 150
 
 #容器名字
 NAME=systemd-ubuntu24
-#检查docker是否已经启动，如果没启动则执行busybox sh /data/docker/start-docker-deamon.sh，如果docker启动则检查systemd-ubuntu22是否启动，没启动则docker start systemd-ubuntu22，并启动桥接模式修复脚本
+#检查docker是否已经启动，如果没启动则执行busybox sh /data/docker/start-docker-daemon.sh，如果docker启动则检查systemd-ubuntu22是否启动，没启动则docker start systemd-ubuntu22，并启动桥接模式修复脚本
 export PATH="/data/docker/bin:$PATH"
 export LD_LIBRARY_PATH="/data/docker/lib:$LD_LIBRARY_PATH"
 
@@ -41,8 +41,8 @@ check_container() {
 # Main loop
 while true; do
     if ! check_dockerd; then
-        echo "$(date): dockerd is not running. Executing /data/docker/restart-docker-deamon.sh..."  >> $LOG
-        busybox sh /data/docker/restart-docker-deamon.sh
+        echo "$(date): dockerd is not running. Executing /data/docker/restart-docker-daemon.sh..."  >> $LOG
+        busybox sh /data/docker/restart-docker-daemon.sh
         sleep 5  # Wait for the daemon to start
         check_container
     else

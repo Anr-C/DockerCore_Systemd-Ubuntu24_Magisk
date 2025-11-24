@@ -1,6 +1,6 @@
 #!/system/bin/sh
 
-#kill docker deamon/containerd
+#kill docker daemon/containerd
 PIDA=$(pgrep dockerd)
 for i in $PIDA; do
      kill $i 2>/dev/null

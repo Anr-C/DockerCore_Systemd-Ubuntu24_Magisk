@@ -98,7 +98,7 @@ rm $MODPATH/docker.tar.xz
 ui_print " ";
 ui_print " Docker 使用方式：";
 ui_print " 推荐直接用 Nethunter Terminal，Termux 使用方式：";
-ui_print " 首先重启开机后查看 /sdcard/docker-deamon.log 确保已经启动";
+ui_print " 首先重启开机后查看 /sdcard/docker-daemon.log 确保已经启动";
 ui_print " 打开 Termux，在终端执行 su 然后即可执行 docker 命令";
 ui_print " 如不行则：在终端执行 su，执行 cd /data/docker，再执行 source env.sh";
 ui_print " 继而就可以执行各种 Docker 命令，创建各种 Docker 容器并管理。";
