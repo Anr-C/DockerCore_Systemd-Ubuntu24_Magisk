@@ -154,3 +154,20 @@ set_perm_recursive $MODPATH/system/lib64 0 0 0755 0644
 set_perm_recursive $MODPATH/system/lib 0 0 0755 0644
 
 set_perm $MODPATH/system/bin/docker 0 0 0755 
+
+# 伪造系统信息
+generate_os_release() {
+  local OS_RELEASE_FILE="$MODPATH/system/etc/os-release"
+  mkdir -p $(dirname "$OS_RELEASE_FILE")
+  local ANDROID_VERSION=$(getprop ro.build.version.release)
+  local BUILD_ID=$(getprop ro.build.id)
+
+  echo "NAME=\"Android\"" > "$OS_RELEASE_FILE"
+  echo "ID=\"android\"" >> "$OS_RELEASE_FILE"
+  echo "VERSION=\"$ANDROID_VERSION\"" >> "$OS_RELEASE_FILE"
+  echo "VERSION_ID=\"$ANDROID_VERSION\"" >> "$OS_RELEASE_FILE"
+  echo "BUILD_ID=\"$BUILD_ID\"" >> "$OS_RELEASE_FILE"
+  echo "PRETTY_NAME=\"Android $ANDROID_VERSION \"" >> "$OS_RELEASE_FILE"
+  set_perm "$OS_RELEASE_FILE" 0 0 0644
+}
+generate_os_release
