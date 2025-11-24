@@ -7,7 +7,7 @@ while [ ! -d "/sdcard/Android" ]; do
     sleep 1
 done
 
-sleep 20
+sleep 15
 
 export PATH=$PATH:/system/xbin:/system/bin:/data/docker/bin:/data/adb/magisk:/data/adb/ksu/bin:/data/adb/ap/bin
 
@@ -130,7 +130,6 @@ sleep 15
 #echo "$(date '+%F %T') | 已启动xxxx" >> /sdcard/docker.log
 rm /sdcard/docker.log
 
-
 #以下为一键导入模块相关的
 ################Ubuntu##############
 if [ -d "/data/adb/modules/ubuntu24" ]; then
@@ -207,6 +206,10 @@ fi
 #ndc network route add local docker0 172.17.0.0/16
 #ndc ipfwd enable docker
 #ndc ipfwd add docker0 wlan0
+
+#默认启用桥接网络，适用于不使用 systemd 容器
+sleep 20
+busybox sh /data/docker/bridge.sh
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 #            cron定时器，自动定时执行脚本的，一般的往/data/adb/modules/docker/cron/script/test.sh塞内容就可以，定时规则在/data/adb/modules/docker/cron/root
